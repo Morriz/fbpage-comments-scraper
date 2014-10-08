@@ -1,6 +1,7 @@
 'use strict';
 
-var http = require('http')
+var crypto = require('crypto')
+  , http = require('http')
   , server
   , graph = require('fbgraph')
   , request = require('request')
@@ -53,10 +54,12 @@ server = http.createServer(function (req, response) {
               , title = "New comment by " + author + " on post '" + (pb.length > 40 ? pb.substr(0, 40) : pb) + "'"
               , description = comment.message
               , link = 'https://www.facebook.com/' + page + '/posts/' + id
+              , guid = link + '-' + crypto.createHash('md5').update(author + description).digest('hex')
               ;
             feed.addItem({
               title: title,
               link: link,
+              guid: guid,
               description: description,
               content: description,
               author: [
