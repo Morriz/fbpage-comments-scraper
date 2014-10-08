@@ -1,0 +1,17 @@
+{
+  "name": "fbpage-comments-scraper",
+  "version": "0.1.0",
+  "description": "facebook page comments scraper using fbgraph",
+  "main": "index.js",
+  "dependencies": {
+    "fbgraph": "^0.2.13",
+    "feed": "^0.2.6",
+    "request": "^2.45.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maurice Faber <morriz@idiotz.nl>",
+  "license": "ISC"
+}
