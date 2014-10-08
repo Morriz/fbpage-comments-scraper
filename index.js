@@ -11,6 +11,7 @@ var crypto = require('crypto')
   , siteImage = 'http://devsurplus.net/image.png'
   , appId = process.env.APPID
   , appSecret = process.env.APPSECRET
+  , titleLength = 80
   , graphBaseUrl = 'https://graph.facebook.com'
   , accessTokenUrl = graphBaseUrl + '/oauth/access_token?client_id=' + appId + '&client_secret=' + appSecret + '&grant_type=client_credentials'
   , options = {
@@ -51,7 +52,7 @@ server = http.createServer(function (req, response) {
           }
           pc.data.forEach(function (comment) {
             var author = comment.from.name
-              , title = "New comment by " + author + " on post '" + (pb.length > 40 ? pb.substr(0, 40) : pb) + "'"
+              , title = "New comment by " + author + " on post '" + (pb.length > titleLength ? pb.substr(0, titleLength) : pb) + "'"
               , description = comment.message
               , link = 'https://www.facebook.com/' + page + '/posts/' + id
               , guid = link + '-' + crypto.createHash('md5').update(author + description).digest('hex')
