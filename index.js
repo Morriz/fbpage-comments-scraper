@@ -62,7 +62,7 @@ server = http.createServer(function (req, response) {
               author: [
                 { name: author }
               ],
-              date: comment.createdTime
+              date: new Date(comment.created_time)
             });
           });
         });
